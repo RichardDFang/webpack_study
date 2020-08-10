@@ -22,17 +22,23 @@ class Car {
 
 const car = new Car();
 
-car.hooks.brake.tap('WarningLampPlugin', () => {console.log('WarningLampPlugin')});
-car.hooks.accelarate.tap('LoggerPlugin', (speed) => {console.log(`Accelarating to new ${speed}`)});
-car.hooks.calculateRoutes.tapPromise('calculateRoutes tapPromise', (source, target, routesList) => {
-    console.log(source);
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            console.log(`tapPromise to ${source}${target}${routesList}`);
-            resolve();
-        }, 1000)
-    })
-})
+car.hooks.brake.tap({
+    name: '111',
+}, () => {console.log('WarningLampPlugin')});
+car.hooks.brake.tap({
+    name: 'WarningLampPlugin',
+    before: '111'
+}, () => {console.log('WarningLampPlugin1')});
+// car.hooks.accelarate.tap('LoggerPlugin', (speed) => {console.log(`Accelarating to new ${speed}`)});
+// car.hooks.calculateRoutes.tapPromise('calculateRoutes tapPromise', (source, target, routesList) => {
+//     console.log(source);
+//     return new Promise((resolve) => {
+//         setTimeout(() => {
+//             console.log(`tapPromise to ${source}${target}${routesList}`);
+//             resolve();
+//         }, 1000)
+//     })
+// })
 
 car.hooks.brake.call();
 car.hooks.accelarate.call(10);
