@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 runLoaders({
-    resource: path.join(__dirname, './src/demo.txt'),
+    resource: path.join(__dirname, './src/index-loader.js'),
     loaders: [
         {
             loader: path.join(__dirname, './src/row-loader.js'),
