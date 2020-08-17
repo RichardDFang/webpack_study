@@ -1,4 +1,4 @@
-# dependency
+# Dependency
 
 依赖的基本类型原型
 
@@ -31,4 +31,4 @@
 
 ### disconnect
 
-重置当前模块
+重置当前模块，当前module置为null
